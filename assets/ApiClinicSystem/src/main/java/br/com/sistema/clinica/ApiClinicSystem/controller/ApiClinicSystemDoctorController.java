@@ -1,5 +1,6 @@
 package br.com.sistema.clinica.ApiClinicSystem.controller;
 
+import br.com.sistema.clinica.ApiClinicSystem.doctor.DoctorRegistrationData;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApiClinicSystemDoctorController {
 
     @PostMapping
-    public void register(@RequestBody String json) {
-        System.out.println(json);
+    public void register(@RequestBody DoctorRegistrationData doctorRegistrationData) {
+        System.out.println(doctorRegistrationData);
     }
 }
