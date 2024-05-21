@@ -18,4 +18,14 @@ public class Address {
     private String uf;
     private String number;
     private String complement;
+
+    public Address(DataAddress address) {
+        this.street = address.street();
+        this.neighborhood = address.neighborhood();
+        this.cep = address.cep();
+        this.city = address.city();
+        this.uf = address.uf();
+        this.number = address.number();
+        this.complement = address.complement();
+    }
 }

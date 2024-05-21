@@ -30,4 +30,12 @@ public class ApiClinicSystemDoctor {
 
     @Embedded
     private Address address;
+
+    public ApiClinicSystemDoctor(DoctorRegistrationData doctorRegistrationData) {
+        this.name = doctorRegistrationData.name();
+        this.email = doctorRegistrationData.email();
+        this.crm = doctorRegistrationData.crm();
+        this.specialty = doctorRegistrationData.specialty();
+        this.address = new Address(doctorRegistrationData.address());
+    }
 }

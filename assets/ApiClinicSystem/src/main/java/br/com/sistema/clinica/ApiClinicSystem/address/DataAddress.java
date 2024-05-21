@@ -1,4 +1,4 @@
-package br.com.sistema.clinica.ApiClinicSystem.address; 
+package br.com.sistema.clinica.ApiClinicSystem.address;
 
 public record DataAddress(  String street,
                             String neighborhood,
