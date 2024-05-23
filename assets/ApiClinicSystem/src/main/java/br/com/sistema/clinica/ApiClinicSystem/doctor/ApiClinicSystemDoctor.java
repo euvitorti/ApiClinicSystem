@@ -19,23 +19,26 @@ public class ApiClinicSystemDoctor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String nome;
 
     private String email;
+
+    private String telefone;
 
     private String crm;
 
     @Enumerated(EnumType.STRING)
-    private SpecialtyEnum specialty;
+    private SpecialtyEnum especialidade;
 
     @Embedded
-    private Address address;
+    private Address endereco;
 
     public ApiClinicSystemDoctor(DoctorRegistrationData doctorRegistrationData) {
-        this.name = doctorRegistrationData.name();
+        this.nome = doctorRegistrationData.name();
         this.email = doctorRegistrationData.email();
+        this.telefone = doctorRegistrationData.phone();
         this.crm = doctorRegistrationData.crm();
-        this.specialty = doctorRegistrationData.specialty();
-        this.address = new Address(doctorRegistrationData.address());
+        this.especialidade = doctorRegistrationData.specialty();
+        this.endereco = new Address(doctorRegistrationData.address());
     }
 }

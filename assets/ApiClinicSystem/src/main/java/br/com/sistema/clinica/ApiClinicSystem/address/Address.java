@@ -11,21 +11,21 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Address {
 
-    private String street;
-    private String neighborhood;
+    private String logradouro;
+    private String bairro;
     private String cep;
-    private String number;
-    private String complement;
-    private String city;
+    private String numero;
+    private String complemento;
+    private String cidade;
     private String uf;
 
     public Address(DataAddress address) {
-        this.street = address.street();
-        this.neighborhood = address.neighborhood();
+        this.logradouro = address.street();
+        this.bairro = address.neighborhood();
         this.cep = address.cep();
-        this.city = address.city();
+        this.cidade = address.city();
         this.uf = address.uf();
-        this.number = address.number();
-        this.complement = address.complement();
+        this.numero = address.number();
+        this.complemento = address.complement();
     }
 }
