@@ -38,4 +38,15 @@ public class Paciente {
         this.endereco = new Address(pacienteDTO.address());
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
 }
