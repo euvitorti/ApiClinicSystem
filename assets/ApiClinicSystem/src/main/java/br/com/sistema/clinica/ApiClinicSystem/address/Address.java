@@ -14,10 +14,10 @@ public class Address {
     private String street;
     private String neighborhood;
     private String cep;
-    private String city;
-    private String uf;
     private String number;
     private String complement;
+    private String city;
+    private String uf;
 
     public Address(DataAddress address) {
         this.street = address.street();
