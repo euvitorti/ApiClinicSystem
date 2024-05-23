@@ -29,4 +29,5 @@ public class Paciente {
         this.cpf = pacienteDTO.cpf();
         this.endereco = new Address(pacienteDTO.address());
     }
+
 }

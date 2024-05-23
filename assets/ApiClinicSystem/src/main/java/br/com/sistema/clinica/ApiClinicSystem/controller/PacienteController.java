@@ -2,7 +2,7 @@ package br.com.sistema.clinica.ApiClinicSystem.controller;
 
 import br.com.sistema.clinica.ApiClinicSystem.dto.PacienteDTO;
 import br.com.sistema.clinica.ApiClinicSystem.paciente.Paciente;
-import br.com.sistema.clinica.ApiClinicSystem.repository.PacienteRepository;
+import br.com.sistema.clinica.ApiClinicSystem.repository.IPacienteRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("pacientes")
 public class PacienteController {
     @Autowired
-    private PacienteRepository pacienteRepository;
+    private IPacienteRepository IPacienteRepository;
 
     @PostMapping
     @Transactional
     public void register(@RequestBody @Valid PacienteDTO pacienteDTO){
-        pacienteRepository.save(new Paciente(pacienteDTO));
+        IPacienteRepository.save(new Paciente(pacienteDTO));
     }
 }
