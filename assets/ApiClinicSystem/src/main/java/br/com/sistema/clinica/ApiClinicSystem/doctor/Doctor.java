@@ -35,6 +35,8 @@ public class Doctor {
     @Embedded
     private Address endereco;
 
+    private Boolean ativo;
+
     public Doctor(DoctorDTO doctorDTO) {
         this.nome = doctorDTO.name();
         this.email = doctorDTO.email();
@@ -42,6 +44,7 @@ public class Doctor {
         this.crm = doctorDTO.crm();
         this.especialidade = doctorDTO.specialty();
         this.endereco = new Address(doctorDTO.address());
+        this.ativo = true;
     }
 
     public Long getId() {
@@ -77,5 +80,9 @@ public class Doctor {
         if(updateDoctorDTO.dataAddress() != null) {
             this.endereco.updateAddress(updateDoctorDTO.dataAddress());
         }
+    }
+
+    public void logicalExclusion() {
+        this.ativo = false;
     }
 }

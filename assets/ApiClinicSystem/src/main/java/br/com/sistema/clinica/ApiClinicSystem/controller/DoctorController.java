@@ -33,7 +33,8 @@ public class DoctorController {
         // ORDENAÇÃO É PASSADA PELA URL ?sort=nome
         // TODO @PageableDefault
 
-        return iDoctorRepository.findAll(pageable).map(ListDoctorsDTO::new);
+        //BUSCAR SOMENTE OS ATIVOS
+        return iDoctorRepository.findAllByAtivoTrue(pageable).map(ListDoctorsDTO::new);
     }
 
     @PutMapping
@@ -45,5 +46,13 @@ public class DoctorController {
 
         // ATUALIZA OS DADOS
         doctor.updateDoctor(updateDoctorDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void deleteDoctor(@PathVariable Long id) {
+        var doctor = iDoctorRepository.getReferenceById(id);
+
+        doctor.logicalExclusion();
     }
 }
