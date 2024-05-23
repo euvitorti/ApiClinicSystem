@@ -2,12 +2,20 @@ package br.com.sistema.clinica.ApiClinicSystem.paciente;
 
 import br.com.sistema.clinica.ApiClinicSystem.address.Address;
 import br.com.sistema.clinica.ApiClinicSystem.dto.PacienteDTO;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+
+@Table(name = "pacientes")
+@Entity(name = "Paciente")
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class Paciente {
 
     @Id
