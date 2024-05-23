@@ -31,6 +31,26 @@ public class Doctor {
     @Enumerated(EnumType.STRING)
     private SpecialtyEnum especialidade;
 
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getCrm() {
+        return crm;
+    }
+
+    public SpecialtyEnum getEspecialidade() {
+        return especialidade;
+    }
+
+    public Address getEndereco() {
+        return endereco;
+    }
+
     @Embedded
     private Address endereco;
 
