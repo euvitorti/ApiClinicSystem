@@ -3,6 +3,7 @@ package br.com.sistema.clinica.ApiClinicSystem.controller;
 import br.com.sistema.clinica.ApiClinicSystem.doctor.Doctor;
 import br.com.sistema.clinica.ApiClinicSystem.dto.DoctorDTO;
 import br.com.sistema.clinica.ApiClinicSystem.dto.ListDoctorsDTO;
+import br.com.sistema.clinica.ApiClinicSystem.dto.UpdateDoctorDTO;
 import br.com.sistema.clinica.ApiClinicSystem.repository.IDoctorRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -10,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("medicos")
@@ -35,5 +34,16 @@ public class DoctorController {
         // TODO @PageableDefault
 
         return iDoctorRepository.findAll(pageable).map(ListDoctorsDTO::new);
+    }
+
+    @PutMapping
+    @Transactional
+    public void updateDoctor(@RequestBody @Valid UpdateDoctorDTO updateDoctorDTO) {
+
+        // BUSCANDO O MÉDICO PELO ID
+        var doctor = iDoctorRepository.getReferenceById(updateDoctorDTO.id());
+
+        // ATUALIZA OS DADOS
+        doctor.updateDoctor(updateDoctorDTO);
     }
 }
