@@ -15,7 +15,7 @@ public class Address {
     private String bairro;
     private String cep;
     private String numero;
-    private String complemento;
+    private String complement;
     private String cidade;
     private String uf;
 
@@ -26,6 +26,6 @@ public class Address {
         this.cidade = address.city();
         this.uf = address.uf();
         this.numero = address.number();
-        this.complemento = address.complement();
+        this.complement = address.complement();
     }
 }

@@ -1,6 +1,7 @@
 package br.com.sistema.clinica.ApiClinicSystem.doctor;
 
 import br.com.sistema.clinica.ApiClinicSystem.address.Address;
+import br.com.sistema.clinica.ApiClinicSystem.dto.DoctorDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -13,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class ApiClinicSystemDoctor {
+public class Doctor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,12 +34,12 @@ public class ApiClinicSystemDoctor {
     @Embedded
     private Address endereco;
 
-    public ApiClinicSystemDoctor(DoctorRegistrationData doctorRegistrationData) {
-        this.nome = doctorRegistrationData.name();
-        this.email = doctorRegistrationData.email();
-        this.telefone = doctorRegistrationData.phone();
-        this.crm = doctorRegistrationData.crm();
-        this.especialidade = doctorRegistrationData.specialty();
-        this.endereco = new Address(doctorRegistrationData.address());
+    public Doctor(DoctorDTO doctorDTO) {
+        this.nome = doctorDTO.name();
+        this.email = doctorDTO.email();
+        this.telefone = doctorDTO.phone();
+        this.crm = doctorDTO.crm();
+        this.especialidade = doctorDTO.specialty();
+        this.endereco = new Address(doctorDTO.address());
     }
 }
