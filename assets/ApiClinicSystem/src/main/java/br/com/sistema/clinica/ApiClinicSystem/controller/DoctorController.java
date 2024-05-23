@@ -31,6 +31,8 @@ public class DoctorController {
 
         // CONVERSÃO, POIS ESTÁ RECEBENDO UMA LISTA DE MÉDICOS
         // PAGINAÇÃO, USA A CLASSE OAGEABLE DO SPRING, CUIDADO AO IMPORTAR, POIS EXISTE UMA CLASSE COM O MESMO NOME DO JAVA
+        // ORDENAÇÃO É PASSADA PELA URL ?sort=nome
+        // TODO @PageableDefault
 
         return iDoctorRepository.findAll(pageable).map(ListDoctorsDTO::new);
     }
