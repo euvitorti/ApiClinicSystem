@@ -2,6 +2,7 @@ package br.com.sistema.clinica.ApiClinicSystem.paciente;
 
 import br.com.sistema.clinica.ApiClinicSystem.address.Address;
 import br.com.sistema.clinica.ApiClinicSystem.dto.PacienteDTO;
+import br.com.sistema.clinica.ApiClinicSystem.dto.UpdatePacienteDTO;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -30,12 +31,15 @@ public class Paciente {
     @Embedded
     private Address endereco;
 
+    private Boolean ativo;
+
     public Paciente(@Valid PacienteDTO pacienteDTO) {
         this.nome = pacienteDTO.name();
         this.email = pacienteDTO.email();
         this.telefone = pacienteDTO.phone();
         this.cpf = pacienteDTO.cpf();
         this.endereco = new Address(pacienteDTO.address());
+        this.ativo = true;
     }
 
     public String getNome() {
@@ -48,5 +52,28 @@ public class Paciente {
 
     public String getCpf() {
         return cpf;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void updateInformationPaciente(UpdatePacienteDTO updatePacienteDTO) {
+
+        if(updatePacienteDTO.name() != null) {
+            this.nome = updatePacienteDTO.name();
+        }
+
+        if(updatePacienteDTO.phone() != null) {
+            this.telefone = updatePacienteDTO.phone();
+        }
+
+        if(updatePacienteDTO.dataAddress() != null) {
+            this.endereco.updateAddress(updatePacienteDTO.dataAddress());
+        }
+    }
+
+    public void logicalExclusion() {
+        this.ativo = false;
     }
 }
