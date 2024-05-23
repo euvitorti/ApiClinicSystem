@@ -7,6 +7,8 @@ import br.com.sistema.clinica.ApiClinicSystem.repository.IDoctorRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,10 +27,11 @@ public class DoctorController {
     }
 
     @GetMapping
-    public List<ListDoctorsDTO> doctorList() {
+    public Page<ListDoctorsDTO> doctorList(Pageable pageable) {
 
         // CONVERSÃO, POIS ESTÁ RECEBENDO UMA LISTA DE MÉDICOS
+        // PAGINAÇÃO, USA A CLASSE OAGEABLE DO SPRING, CUIDADO AO IMPORTAR, POIS EXISTE UMA CLASSE COM O MESMO NOME DO JAVA
 
-        return iDoctorRepository.findAll().stream().map(ListDoctorsDTO::new).toList();
+        return iDoctorRepository.findAll(pageable).map(ListDoctorsDTO::new);
     }
 }
