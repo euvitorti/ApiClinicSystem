@@ -50,6 +50,14 @@ public class Paciente {
         return email;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public Address getEndereco() {
+        return endereco;
+    }
+
     public String getCpf() {
         return cpf;
     }

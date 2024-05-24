@@ -1,7 +1,6 @@
 package br.com.sistema.clinica.ApiClinicSystem.dto;
 
 import br.com.sistema.clinica.ApiClinicSystem.address.DataAddress;
-import br.com.sistema.clinica.ApiClinicSystem.doctor.SpecialtyEnum;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

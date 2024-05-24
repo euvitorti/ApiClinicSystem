@@ -80,4 +80,10 @@ public class DoctorController {
         // 204 NO CONTENT
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity doctorDetails(@PathVariable Long id) {
+        var doctor = iDoctorRepository.getReferenceById(id);
+        return ResponseEntity.ok(new DoctorsDetailsDTO(doctor));
+    }
 }
