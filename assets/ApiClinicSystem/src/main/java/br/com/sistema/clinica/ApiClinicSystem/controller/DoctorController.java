@@ -2,6 +2,7 @@ package br.com.sistema.clinica.ApiClinicSystem.controller;
 
 import br.com.sistema.clinica.ApiClinicSystem.doctor.Doctor;
 import br.com.sistema.clinica.ApiClinicSystem.dto.DoctorDTO;
+import br.com.sistema.clinica.ApiClinicSystem.dto.DoctorsDetailsDTO;
 import br.com.sistema.clinica.ApiClinicSystem.dto.ListDoctorsDTO;
 import br.com.sistema.clinica.ApiClinicSystem.dto.UpdateDoctorDTO;
 import br.com.sistema.clinica.ApiClinicSystem.repository.IDoctorRepository;
@@ -10,7 +11,9 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("medicos")
@@ -19,14 +22,29 @@ public class DoctorController {
     @Autowired
     private IDoctorRepository iDoctorRepository;
 
+    // PADRONIZANDO O RETORNO DA API
+//    ResponseEntity
+
     @PostMapping
     @Transactional
-    public void register(@RequestBody @Valid DoctorDTO doctorDTO) {
-        iDoctorRepository.save(new Doctor(doctorDTO));
+    public ResponseEntity register(@RequestBody @Valid DoctorDTO doctorDTO, UriComponentsBuilder uriComponentsBuilder) {
+
+        // CÓDIGO 201 DEVOLVE NO CORPO DA RESPOSTA OS DADOS DO NOVO RECURSO/REGISTRO CRIADO
+        // DEVOLVE TAMBÉM UM CABEÇALHO DO PROTOCOLO HTTP (LOCATION)
+
+        var doctor = new Doctor(doctorDTO);
+
+        iDoctorRepository.save(doctor);
+
+        // É O ENDEREÇO DA API
+        // UriComponentsBuilder - FICA ENCARREGADO PARA SABER QUAL É O ENDEREÇO AUTOMATICAMENTE
+        var uri = uriComponentsBuilder.path("/medicos/{id}").buildAndExpand(doctor.getId()).toUri();
+
+        return ResponseEntity.created(uri).body(new DoctorsDetailsDTO(doctor));
     }
 
     @GetMapping
-    public Page<ListDoctorsDTO> doctorList(Pageable pageable) {
+    public ResponseEntity<Page<ListDoctorsDTO>> doctorList(Pageable pageable) {
 
         // CONVERSÃO, POIS ESTÁ RECEBENDO UMA LISTA DE MÉDICOS
         // PAGINAÇÃO, USA A CLASSE OAGEABLE DO SPRING, CUIDADO AO IMPORTAR, POIS EXISTE UMA CLASSE COM O MESMO NOME DO JAVA
@@ -34,25 +52,32 @@ public class DoctorController {
         // TODO @PageableDefault
 
         //BUSCAR SOMENTE OS ATIVOS
-        return iDoctorRepository.findAllByAtivoTrue(pageable).map(ListDoctorsDTO::new);
+        var page = iDoctorRepository.findAllByAtivoTrue(pageable).map(ListDoctorsDTO::new);
+
+        return ResponseEntity.ok(page);
     }
 
     @PutMapping
     @Transactional
-    public void updateDoctor(@RequestBody @Valid UpdateDoctorDTO updateDoctorDTO) {
+    public ResponseEntity updateDoctor(@RequestBody @Valid UpdateDoctorDTO updateDoctorDTO) {
 
         // BUSCANDO O MÉDICO PELO ID
         var doctor = iDoctorRepository.getReferenceById(updateDoctorDTO.id());
 
         // ATUALIZA OS DADOS
         doctor.updateDoctor(updateDoctorDTO);
+
+        return ResponseEntity.ok(new DoctorsDetailsDTO(doctor));
     }
 
     @DeleteMapping("/{id}")
     @Transactional
-    public void deleteDoctor(@PathVariable Long id) {
+    public ResponseEntity deleteDoctor(@PathVariable Long id) {
         var doctor = iDoctorRepository.getReferenceById(id);
 
         doctor.logicalExclusion();
+
+        // 204 NO CONTENT
+        return ResponseEntity.noContent().build();
     }
 }

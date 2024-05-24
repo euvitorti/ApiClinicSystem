@@ -63,6 +63,14 @@ public class Doctor {
         return crm;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public Address getEndereco() {
+        return endereco;
+    }
+
     public SpecialtyEnum getEspecialidade() {
         return especialidade;
     }
