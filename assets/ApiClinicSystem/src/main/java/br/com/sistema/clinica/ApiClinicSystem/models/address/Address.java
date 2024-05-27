@@ -1,4 +1,4 @@
-package br.com.sistema.clinica.ApiClinicSystem.address;
+package br.com.sistema.clinica.ApiClinicSystem.models.address;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

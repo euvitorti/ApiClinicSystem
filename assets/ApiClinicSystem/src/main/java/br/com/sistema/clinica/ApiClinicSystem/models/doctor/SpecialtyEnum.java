@@ -1,4 +1,4 @@
-package br.com.sistema.clinica.ApiClinicSystem.doctor;
+package br.com.sistema.clinica.ApiClinicSystem.models.doctor;
 
 public enum SpecialtyEnum {
     ORTOPEDIA,

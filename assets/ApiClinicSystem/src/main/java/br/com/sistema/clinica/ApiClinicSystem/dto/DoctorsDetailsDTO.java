@@ -1,8 +1,8 @@
 package br.com.sistema.clinica.ApiClinicSystem.dto;
 
-import br.com.sistema.clinica.ApiClinicSystem.address.Address;
-import br.com.sistema.clinica.ApiClinicSystem.doctor.Doctor;
-import br.com.sistema.clinica.ApiClinicSystem.doctor.SpecialtyEnum;
+import br.com.sistema.clinica.ApiClinicSystem.models.address.Address;
+import br.com.sistema.clinica.ApiClinicSystem.models.doctor.Doctor;
+import br.com.sistema.clinica.ApiClinicSystem.models.doctor.SpecialtyEnum;
 
 public record DoctorsDetailsDTO(
         Long Id,

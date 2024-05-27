@@ -1,6 +1,6 @@
 package br.com.sistema.clinica.ApiClinicSystem.dto;
 
-import br.com.sistema.clinica.ApiClinicSystem.address.DataAddress;
+import br.com.sistema.clinica.ApiClinicSystem.models.address.DataAddress;
 import jakarta.validation.constraints.NotNull;
 
 public record UpdateDoctorDTO(

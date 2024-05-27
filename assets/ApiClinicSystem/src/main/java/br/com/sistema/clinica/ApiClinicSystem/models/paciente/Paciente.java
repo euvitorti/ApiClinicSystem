@@ -1,6 +1,6 @@
-package br.com.sistema.clinica.ApiClinicSystem.paciente;
+package br.com.sistema.clinica.ApiClinicSystem.models.paciente;
 
-import br.com.sistema.clinica.ApiClinicSystem.address.Address;
+import br.com.sistema.clinica.ApiClinicSystem.models.address.Address;
 import br.com.sistema.clinica.ApiClinicSystem.dto.PacienteDTO;
 import br.com.sistema.clinica.ApiClinicSystem.dto.UpdatePacienteDTO;
 import jakarta.persistence.*;
