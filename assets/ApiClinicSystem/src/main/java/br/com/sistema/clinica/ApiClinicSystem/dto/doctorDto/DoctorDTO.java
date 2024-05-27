@@ -10,23 +10,23 @@ import jakarta.validation.constraints.Pattern;
 
 public record DoctorDTO(
 
-        @NotBlank
+        @NotBlank(message = "Nome é obrigatório")
         String name,
 
-        @NotBlank
-        @Email
+        @NotBlank(message = "O email é obrigatório")
+        @Email(message = "Formato do email é inválido")
         String email,
 
-        @NotBlank
+        @NotBlank(message = "O telefone é obrigatório")
         String phone,
 
-        @NotBlank
+        @NotBlank(message = "CRM é obrigatório")
         @Pattern(regexp = "\\d{4,6}")
         String crm,
 
-        @NotNull
+        @NotNull(message = "Especialidade é obrigatório")
         SpecialtyEnum specialty,
 
-        @NotNull
+        @NotNull(message = "Endereço é obrigatório")
         @Valid
         DataAddress address) {}
