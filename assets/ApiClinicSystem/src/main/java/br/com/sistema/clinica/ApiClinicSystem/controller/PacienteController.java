@@ -1,9 +1,9 @@
 package br.com.sistema.clinica.ApiClinicSystem.controller;
 
-import br.com.sistema.clinica.ApiClinicSystem.dto.ListPacienteDTO;
-import br.com.sistema.clinica.ApiClinicSystem.dto.PacienteDTO;
-import br.com.sistema.clinica.ApiClinicSystem.dto.PacienteDetailsDTO;
-import br.com.sistema.clinica.ApiClinicSystem.dto.UpdatePacienteDTO;
+import br.com.sistema.clinica.ApiClinicSystem.dto.pacienteDto.ListPacienteDTO;
+import br.com.sistema.clinica.ApiClinicSystem.dto.pacienteDto.PacienteDTO;
+import br.com.sistema.clinica.ApiClinicSystem.dto.pacienteDto.PacienteDetailsDTO;
+import br.com.sistema.clinica.ApiClinicSystem.dto.pacienteDto.UpdatePacienteDTO;
 import br.com.sistema.clinica.ApiClinicSystem.models.paciente.Paciente;
 import br.com.sistema.clinica.ApiClinicSystem.repository.IPacienteRepository;
 import jakarta.transaction.Transactional;

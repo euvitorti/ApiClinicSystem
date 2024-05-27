@@ -1,4 +1,4 @@
-package br.com.sistema.clinica.ApiClinicSystem.dto;
+package br.com.sistema.clinica.ApiClinicSystem.dto.pacienteDto;
 
 import br.com.sistema.clinica.ApiClinicSystem.models.address.Address;
 import br.com.sistema.clinica.ApiClinicSystem.models.paciente.Paciente;
