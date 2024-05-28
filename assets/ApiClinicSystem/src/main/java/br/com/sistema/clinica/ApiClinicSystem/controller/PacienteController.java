@@ -5,7 +5,7 @@ import br.com.sistema.clinica.ApiClinicSystem.dto.pacienteDto.PacienteDTO;
 import br.com.sistema.clinica.ApiClinicSystem.dto.pacienteDto.PacienteDetailsDTO;
 import br.com.sistema.clinica.ApiClinicSystem.dto.pacienteDto.UpdatePacienteDTO;
 import br.com.sistema.clinica.ApiClinicSystem.models.paciente.Paciente;
-import br.com.sistema.clinica.ApiClinicSystem.repository.IPacienteRepository;
+import br.com.sistema.clinica.ApiClinicSystem.repository.paciente.IPacienteRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

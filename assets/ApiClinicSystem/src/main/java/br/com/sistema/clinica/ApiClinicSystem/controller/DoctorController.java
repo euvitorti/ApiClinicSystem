@@ -5,7 +5,7 @@ import br.com.sistema.clinica.ApiClinicSystem.dto.doctorDto.DoctorsDetailsDTO;
 import br.com.sistema.clinica.ApiClinicSystem.dto.doctorDto.ListDoctorsDTO;
 import br.com.sistema.clinica.ApiClinicSystem.dto.doctorDto.UpdateDoctorDTO;
 import br.com.sistema.clinica.ApiClinicSystem.models.doctor.Doctor;
-import br.com.sistema.clinica.ApiClinicSystem.repository.IDoctorRepository;
+import br.com.sistema.clinica.ApiClinicSystem.repository.doctor.IDoctorRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
