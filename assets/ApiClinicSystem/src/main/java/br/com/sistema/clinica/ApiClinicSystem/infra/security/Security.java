@@ -20,9 +20,9 @@ public class Security {
         // Para desabilitar a proteção ataques do tipo CSRF (Cross-Site Request Forgery)
         // Motivo: O TOKEN já vem habilitado para esse tipo de ataque, logo seria redundante
 
-        return httpSecurity.csrf().disable()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().build();
+        return httpSecurity.csrf(c -> c.disable())
+                .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .build();
     }
 
 }
