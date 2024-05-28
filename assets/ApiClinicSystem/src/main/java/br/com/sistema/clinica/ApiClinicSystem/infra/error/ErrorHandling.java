@@ -1,4 +1,4 @@
-package br.com.sistema.clinica.ApiClinicSystem.infra;
+package br.com.sistema.clinica.ApiClinicSystem.infra.error;
 
 import br.com.sistema.clinica.ApiClinicSystem.dto.errorDto.ErrorHandlingDTO;
 import jakarta.persistence.EntityNotFoundException;
