@@ -1,4 +1,4 @@
-package br.com.sistema.clinica.ApiClinicSystem.repository;
+package br.com.sistema.clinica.ApiClinicSystem.repository.doctor;
 
 import br.com.sistema.clinica.ApiClinicSystem.models.doctor.Doctor;
 import org.springframework.data.domain.Page;
