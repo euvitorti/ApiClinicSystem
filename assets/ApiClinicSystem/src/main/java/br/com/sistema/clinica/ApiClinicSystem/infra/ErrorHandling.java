@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ErrorHandling {
 
-    // DEFININDO PARA QUAL EXCEÇÃO ESSE MÉTODO SERÁ CHAMADO, USA A ANOTAÇÃO A SEGUIR
+    // A anotação @ExceptionHandler, indica qual exception um determinado método da classe
+    // de tratamento de erros deve capturar;
 
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity errorHandling404(){
