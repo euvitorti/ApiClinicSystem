@@ -1,6 +1,8 @@
 package br.com.sistema.clinica.ApiClinicSystem.controller.auth;
 
 import br.com.sistema.clinica.ApiClinicSystem.dto.authDto.AuthenticationDTO;
+import br.com.sistema.clinica.ApiClinicSystem.infra.security.TokenJwt;
+import br.com.sistema.clinica.ApiClinicSystem.models.user.User;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +21,15 @@ public class AuthenticationController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private TokenJwt tokenJwt;
+
     @PostMapping
     public ResponseEntity login(@RequestBody @Valid AuthenticationDTO authenticationDTO) {
         var token = new UsernamePasswordAuthenticationToken(authenticationDTO.login(), authenticationDTO.password());
         var auth = authenticationManager.authenticate(token);
 
-        return ResponseEntity.ok().build();
+        // PASSANDO O USUÁRIO COMO PARÂMETRO
+        return ResponseEntity.ok(tokenJwt.generateToken((User) auth.getPrincipal()));
     }
 }

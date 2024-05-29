@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Table(name = "usuarios")
-@Entity(name = "User")
+@Entity(name = "Usuario")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,7 +25,7 @@ public class User implements UserDetails {
     private Long id;
 
     private String login;
-    private String password;
+    private String senha;
 
     // USADO PARA CONTROLE DE PERFIL, ESTE NO CASO, ATÉ O MOMENTO NÃO VAI TER UM CONTROLE
     @Override
@@ -35,7 +35,7 @@ public class User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return password;
+        return senha;
     }
 
     @Override
