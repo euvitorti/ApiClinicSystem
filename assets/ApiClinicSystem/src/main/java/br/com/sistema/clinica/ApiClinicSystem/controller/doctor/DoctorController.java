@@ -1,4 +1,4 @@
-package br.com.sistema.clinica.ApiClinicSystem.controller;
+package br.com.sistema.clinica.ApiClinicSystem.controller.doctor;
 
 import br.com.sistema.clinica.ApiClinicSystem.dto.doctorDto.DoctorDTO;
 import br.com.sistema.clinica.ApiClinicSystem.dto.doctorDto.DoctorsDetailsDTO;
