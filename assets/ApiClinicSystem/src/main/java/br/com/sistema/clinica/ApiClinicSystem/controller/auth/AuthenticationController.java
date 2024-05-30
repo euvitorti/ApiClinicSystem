@@ -1,6 +1,7 @@
 package br.com.sistema.clinica.ApiClinicSystem.controller.auth;
 
 import br.com.sistema.clinica.ApiClinicSystem.dto.authDto.AuthenticationDTO;
+import br.com.sistema.clinica.ApiClinicSystem.dto.authDto.TokenJwtDTO;
 import br.com.sistema.clinica.ApiClinicSystem.infra.security.TokenJwt;
 import br.com.sistema.clinica.ApiClinicSystem.models.user.User;
 import jakarta.validation.Valid;
@@ -26,10 +27,11 @@ public class AuthenticationController {
 
     @PostMapping
     public ResponseEntity login(@RequestBody @Valid AuthenticationDTO authenticationDTO) {
-        var token = new UsernamePasswordAuthenticationToken(authenticationDTO.login(), authenticationDTO.password());
-        var auth = authenticationManager.authenticate(token);
+        var authToken = new UsernamePasswordAuthenticationToken(authenticationDTO.login(), authenticationDTO.password());
+        var auth = authenticationManager.authenticate(authToken);
 
         // PASSANDO O USUÁRIO COMO PARÂMETRO
-        return ResponseEntity.ok(tokenJwt.generateToken((User) auth.getPrincipal()));
+        var token = tokenJwt.generateToken((User) auth.getPrincipal());
+        return ResponseEntity.ok(new TokenJwtDTO(token));
     }
 }
