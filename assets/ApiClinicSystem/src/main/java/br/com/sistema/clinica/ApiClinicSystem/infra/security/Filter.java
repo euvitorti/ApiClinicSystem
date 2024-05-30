@@ -1,10 +1,14 @@
 package br.com.sistema.clinica.ApiClinicSystem.infra.security;
 
+import br.com.sistema.clinica.ApiClinicSystem.repository.user.IUserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -18,26 +22,35 @@ public class Filter extends OncePerRequestFilter {
     @Autowired
     private TokenJwt tokenJwtService;
 
+    private IUserRepository iUserRepository;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-            var tokenJWT = recoverToken(request);
+        var tokenJWT = recoverToken(request);
+
+        if (tokenJWT != null) {
             var subject = tokenJwtService.getSubject(tokenJWT);
 
-            
+            // AUTENTICANOD O USUÁRIO, POIS O SPRING NÃO SABE
+            var user = iUserRepository.findByLogin(subject);
+            var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
 
-            // NECESSÁRIO PARA CHAMAR OS PRÓXIMOS FILTROS NA APLICAÇÃO
-            filterChain.doFilter(request, response);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+        }
+
+        // NECESSÁRIO PARA CHAMAR OS PRÓXIMOS FILTROS NA APLICAÇÃO
+        filterChain.doFilter(request, response);
     }
 
     private String recoverToken(HttpServletRequest request) {
 
         var authorizationHeader = request.getHeader("Authorization");
 
-        if (authorizationHeader == null) {
-            throw new RuntimeException("Token não enviado.");
+        if (authorizationHeader != null) {
+            return authorizationHeader.replace("Bearer", "");
         }
 
-        return authorizationHeader.replace("Bearer", "");
+        return null;
     }
 }

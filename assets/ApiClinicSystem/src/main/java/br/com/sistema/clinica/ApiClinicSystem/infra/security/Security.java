@@ -26,6 +26,12 @@ public class Security {
 
         return httpSecurity.csrf(c -> c.disable())
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                // A REQUISIÇÃO É LIBERADA
+                .authorizeHttpRequests(req -> {
+                    req.requestMatchers("/login").permitAll();
+                    // QUALQUER OUTRA REQUISIÇÃO ESTÁ BLOQUEADA
+                    req.anyRequest().authenticated();
+                })
                 .build();
     }
 
