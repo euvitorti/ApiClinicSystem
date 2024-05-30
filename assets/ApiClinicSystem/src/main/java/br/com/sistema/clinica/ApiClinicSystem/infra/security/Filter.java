@@ -20,8 +20,21 @@ public class Filter extends OncePerRequestFilter {
             HttpServletResponse response,
             FilterChain filterChain) throws ServletException, IOException {
 
+            var tokenJWT = recoverToken(request);
+
             // NECESSÁRIO PARA CHAMAR OS PRÓXIMOS FILTROS NA APLICAÇÃO
             filterChain.doFilter(request, response);
 
+    }
+
+    private String recoverToken(HttpServletRequest request) {
+
+        var authorizationHeader = request.getHeader("Authorization");
+
+        if (authorizationHeader == null) {
+            throw new RuntimeException("Token não enviado.");
+        }
+
+        return authorizationHeader.replace("Bearer", "");
     }
 }
