@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -24,6 +23,9 @@ public class Filter extends OncePerRequestFilter {
 
     private IUserRepository iUserRepository;
 
+    // É IMPORTANTE DETERMINAR A ORDEM DOS FILTROS APLICADOS
+    // O PADRÃO DO SPRING É CHAMAR O FILTRO DELE, VERIFICAR SE O USUÁRIO ESTÁ LOGADO
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
@@ -32,7 +34,7 @@ public class Filter extends OncePerRequestFilter {
         if (tokenJWT != null) {
             var subject = tokenJwtService.getSubject(tokenJWT);
 
-            // AUTENTICANOD O USUÁRIO, POIS O SPRING NÃO SABE
+            // AUTENTICANOD O USUÁRIO, POIS O SPRING NÃO SABE QUE O USUÁRIO ESTÁ LOGADO
             var user = iUserRepository.findByLogin(subject);
             var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
 

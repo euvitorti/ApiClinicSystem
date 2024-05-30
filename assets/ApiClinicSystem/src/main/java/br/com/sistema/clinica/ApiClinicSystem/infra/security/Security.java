@@ -1,5 +1,6 @@
 package br.com.sistema.clinica.ApiClinicSystem.infra.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -10,12 +11,16 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 
 // Usa a seguinte anotação, para informar ao spring que vamos personalizar a configuração de segurança
 @EnableWebSecurity
 public class Security {
+
+    @Autowired
+    private Filter filter;
 
     // Objeto que é usado para configurar processos de autenticação e autorização
     @Bean
@@ -32,6 +37,8 @@ public class Security {
                     // QUALQUER OUTRA REQUISIÇÃO ESTÁ BLOQUEADA
                     req.anyRequest().authenticated();
                 })
+                // ESTE FILTRO IRÁ VIM ANTES DO FILTRO DO SPRING
+                .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
