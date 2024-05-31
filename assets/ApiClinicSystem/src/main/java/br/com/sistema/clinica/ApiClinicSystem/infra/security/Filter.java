@@ -21,6 +21,7 @@ public class Filter extends OncePerRequestFilter {
     @Autowired
     private TokenJwt tokenJwtService;
 
+    @Autowired
     private IUserRepository iUserRepository;
 
     // É IMPORTANTE DETERMINAR A ORDEM DOS FILTROS APLICADOS
@@ -50,7 +51,7 @@ public class Filter extends OncePerRequestFilter {
         var authorizationHeader = request.getHeader("Authorization");
 
         if (authorizationHeader != null) {
-            return authorizationHeader.replace("Bearer", "").trim();
+            return authorizationHeader.replace("Bearer", "");
         }
 
         return null;

@@ -55,7 +55,7 @@ public class TokenJwt {
 
         } catch (JWTVerificationException exception){
             // Invalid signature/claims
-            throw   new RuntimeException("Token inválido ou expirado!");
+            throw new RuntimeException("Token inválido ou expirado!");
         }
     }
 }
