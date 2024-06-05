@@ -1,5 +1,6 @@
 package br.com.sistema.clinica.ApiClinicSystem.services.consultations;
 
+import br.com.sistema.clinica.ApiClinicSystem.dto.consultationDto.DataCancelConsultationDTO;
 import br.com.sistema.clinica.ApiClinicSystem.dto.consultationDto.ScheduleAppointmentDTO;
 import br.com.sistema.clinica.ApiClinicSystem.infra.error.ExceptionValidation;
 import br.com.sistema.clinica.ApiClinicSystem.models.consultation.Consultation;
@@ -41,7 +42,8 @@ public class ConsultationsService {
         var paciente = iPacienteRepository.getReferenceById(scheduleAppointmentDTO.idPaciente());
         var doctor = ChooseDoctor(scheduleAppointmentDTO);
 
-        var consultation = new Consultation(null, doctor, paciente, scheduleAppointmentDTO.date());
+        var consultation = new Consultation(null, doctor, paciente, scheduleAppointmentDTO.date(), null);
+//        var consultation = new Consultation(null, doctor, paciente, scheduleAppointmentDTO.date());
 
         iConsultationRepository.save(consultation);
     }
@@ -58,5 +60,14 @@ public class ConsultationsService {
         }
 
         return iDoctorRepository.ChooseFreeDoctorOnTheDate(scheduleAppointmentDTO.specialtyEnum(), scheduleAppointmentDTO.date());
+    }
+
+    public void cancel(DataCancelConsultationDTO data) {
+        if (!iConsultationRepository.existsById(data.idConsulta())) {
+            throw new ExceptionValidation("Id da consulta informado não existe!");
+        }
+
+        var consultation = iConsultationRepository.getReferenceById(data.idConsulta());
+        consultation.cancel(data.cancellationReason());
     }
 }
