@@ -1,6 +1,5 @@
 package br.com.sistema.clinica.ApiClinicSystem.dto.consultationDto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
 
