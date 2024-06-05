@@ -1,5 +1,6 @@
 package br.com.sistema.clinica.ApiClinicSystem.dto.consultationDto;
 
+import br.com.sistema.clinica.ApiClinicSystem.models.doctor.SpecialtyEnum;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
 
@@ -12,7 +13,10 @@ public record ScheduleAppointmentDTO(
         Long idPaciente,
 
         @NotNull
+        // DATA FUTURA
         @Future
         // @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-        LocalDateTime date)
+        LocalDateTime date,
+
+        SpecialtyEnum specialtyEnum)
 { }
