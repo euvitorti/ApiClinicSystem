@@ -16,12 +16,12 @@ public interface IDoctorRepository extends JpaRepository<Doctor, Long> {
     @Query("""
             SELECT m FROM Medico m
             WHERE
-            m.ativo = 1
+            m.ativo = true
             AND
             m.especialidade = :specialtyEnum
             AND
             m.id NOT IN(
-                SELECT c.medico.id FROM Consulta
+                SELECT c.medico.id FROM Consulta c
                 WHERE
                 c.data = :date
             )
