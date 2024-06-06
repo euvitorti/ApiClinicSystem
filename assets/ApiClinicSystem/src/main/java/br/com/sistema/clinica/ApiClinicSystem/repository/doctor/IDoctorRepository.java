@@ -29,4 +29,12 @@ public interface IDoctorRepository extends JpaRepository<Doctor, Long> {
             LIMIT 1
             """)
     Doctor ChooseFreeDoctorOnTheDate(SpecialtyEnum specialtyEnum, LocalDateTime date);
+
+    @Query("""
+            SELECT m.ativo
+            FROM Medico m
+            WHERE
+            m.id = :idDoctor
+            """)
+    Boolean findActiveById(Long idDoctor);
 }
