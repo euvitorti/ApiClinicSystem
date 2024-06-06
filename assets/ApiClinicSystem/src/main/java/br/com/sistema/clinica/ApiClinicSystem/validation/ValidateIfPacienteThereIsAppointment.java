@@ -3,9 +3,15 @@ package br.com.sistema.clinica.ApiClinicSystem.validation;
 import br.com.sistema.clinica.ApiClinicSystem.dto.consultationDto.ScheduleAppointmentDTO;
 import br.com.sistema.clinica.ApiClinicSystem.infra.error.ExceptionValidation;
 import br.com.sistema.clinica.ApiClinicSystem.repository.consultation.IConsultationRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class ValidateIfPacienteThereIsAppointment {
+// VERIFICAR SE O PACIENTE JÁ POSSUI UMA CONSULTA NO DIA
 
+@Component
+public class ValidateIfPacienteThereIsAppointment implements AppointmentValidator{
+
+    @Autowired
     private IConsultationRepository iConsultationRepository;
 
     public void validate(ScheduleAppointmentDTO scheduleAppointmentDTO) {

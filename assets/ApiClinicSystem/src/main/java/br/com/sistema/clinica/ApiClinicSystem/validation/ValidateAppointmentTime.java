@@ -2,11 +2,14 @@ package br.com.sistema.clinica.ApiClinicSystem.validation;
 
 import br.com.sistema.clinica.ApiClinicSystem.dto.consultationDto.ScheduleAppointmentDTO;
 import br.com.sistema.clinica.ApiClinicSystem.infra.error.ExceptionValidation;
+import org.springframework.stereotype.Component;
 
 import java.time.DayOfWeek;
 
 // VALIDAR O HORÁRIO DO FUNCIONAMENTO DA CLÍNICA
-public class ValidateAppointmentTime {
+
+@Component
+public class ValidateAppointmentTime implements AppointmentValidator{
 
     public void validate(ScheduleAppointmentDTO scheduleAppointmentDTO) {
 

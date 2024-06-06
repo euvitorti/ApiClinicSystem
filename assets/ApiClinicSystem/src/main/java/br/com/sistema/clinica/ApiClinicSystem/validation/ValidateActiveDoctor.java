@@ -3,9 +3,15 @@ package br.com.sistema.clinica.ApiClinicSystem.validation;
 import br.com.sistema.clinica.ApiClinicSystem.dto.consultationDto.ScheduleAppointmentDTO;
 import br.com.sistema.clinica.ApiClinicSystem.infra.error.ExceptionValidation;
 import br.com.sistema.clinica.ApiClinicSystem.repository.doctor.IDoctorRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 // VALIDAR SE O MÉDICO ESTÁ ATIVO
-public class ValidateActiveDoctor {
+
+@Component
+public class ValidateActiveDoctor implements AppointmentValidator{
+
+    @Autowired
     private IDoctorRepository iDoctorRepository;
 
     public void validate(ScheduleAppointmentDTO scheduleAppointmentDTO) {

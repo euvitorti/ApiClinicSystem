@@ -2,12 +2,15 @@ package br.com.sistema.clinica.ApiClinicSystem.validation;
 
 import br.com.sistema.clinica.ApiClinicSystem.dto.consultationDto.ScheduleAppointmentDTO;
 import br.com.sistema.clinica.ApiClinicSystem.infra.error.ExceptionValidation;
+import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 
 // O PACIENTE SÓ PODE MARCAR A CONSULTA COM 30 MINUTOS DE ANTECEDÊNCIA
-public class ValidateAppointmentTimeAdvance {
+
+@Component
+public class ValidateAppointmentTimeAdvance implements AppointmentValidator{
     public void validate(ScheduleAppointmentDTO scheduleAppointmentDTO) {
 
         var data = scheduleAppointmentDTO.date();
