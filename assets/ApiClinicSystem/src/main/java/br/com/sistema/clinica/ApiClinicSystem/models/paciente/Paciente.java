@@ -1,8 +1,8 @@
 package br.com.sistema.clinica.ApiClinicSystem.models.paciente;
 
-import br.com.sistema.clinica.ApiClinicSystem.models.address.Address;
 import br.com.sistema.clinica.ApiClinicSystem.dto.pacienteDto.PacienteDTO;
 import br.com.sistema.clinica.ApiClinicSystem.dto.pacienteDto.UpdatePacienteDTO;
+import br.com.sistema.clinica.ApiClinicSystem.models.address.Address;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

@@ -1,8 +1,8 @@
 package br.com.sistema.clinica.ApiClinicSystem.models.doctor;
 
-import br.com.sistema.clinica.ApiClinicSystem.models.address.Address;
 import br.com.sistema.clinica.ApiClinicSystem.dto.doctorDto.DoctorDTO;
 import br.com.sistema.clinica.ApiClinicSystem.dto.doctorDto.UpdateDoctorDTO;
+import br.com.sistema.clinica.ApiClinicSystem.models.address.Address;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

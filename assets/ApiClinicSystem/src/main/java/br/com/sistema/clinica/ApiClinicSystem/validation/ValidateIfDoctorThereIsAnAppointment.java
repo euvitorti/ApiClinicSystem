@@ -16,7 +16,7 @@ public class ValidateIfDoctorThereIsAnAppointment implements AppointmentValidato
 
     public void validate(ScheduleAppointmentDTO scheduleAppointmentDTO){
 
-        var doctorHasAnotherAppointment =  iConsultationRepository.existsByDoctor(scheduleAppointmentDTO.idDoctor(), scheduleAppointmentDTO.date());
+        var doctorHasAnotherAppointment =  iConsultationRepository.existsByIdMedico(scheduleAppointmentDTO.idDoctor(), scheduleAppointmentDTO.data());
 
         if (doctorHasAnotherAppointment) {
             throw new ExceptionValidation("Médico já possui outra consulta neste mesmo horário.");

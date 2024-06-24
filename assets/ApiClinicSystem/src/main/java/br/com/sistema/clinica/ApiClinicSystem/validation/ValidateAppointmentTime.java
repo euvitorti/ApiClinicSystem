@@ -13,7 +13,7 @@ public class ValidateAppointmentTime implements AppointmentValidator{
 
     public void validate(ScheduleAppointmentDTO scheduleAppointmentDTO) {
 
-        var data = scheduleAppointmentDTO.date();
+        var data = scheduleAppointmentDTO.data();
         var sunday = data.getDayOfWeek().equals(DayOfWeek.SUNDAY);
         var beforeTheOpening = data.getHour() < 7;
         var afterTheOpening = data.getHour() > 18;

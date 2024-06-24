@@ -12,11 +12,11 @@ public record ScheduleAppointmentDTO(
         @NotNull
         Long idPaciente,
 
-        @NotNull
-        // DATA FUTURA
-        @Future
         // @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-        LocalDateTime date,
+        // Future - // DATA FUTURA
+        @NotNull
+        @Future
+        LocalDateTime data,
 
-        SpecialtyEnum specialtyEnum)
+        SpecialtyEnum especialidade)
 { }

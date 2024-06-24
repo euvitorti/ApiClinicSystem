@@ -33,6 +33,11 @@ public class ErrorHandling {
                         .toList());
     }
 
+    @ExceptionHandler(ExceptionValidation.class)
+    public ResponseEntity treatBusinessRuleError(ExceptionValidation exceptionValidation) {
+        return ResponseEntity.badRequest().body(exceptionValidation.getMessage());
+    }
+
     //TODO
 
 //    @RestControllerAdvice

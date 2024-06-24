@@ -16,7 +16,7 @@ public class ValidateActivePaciente implements AppointmentValidator{
 
     public void validate(ScheduleAppointmentDTO scheduleAppointmentDTO) {
 
-        var activePaciente = iPacienteRepository.findActiveById(scheduleAppointmentDTO.idPaciente());
+        var activePaciente = iPacienteRepository.findAtivoById(scheduleAppointmentDTO.idPaciente());
         if (!activePaciente) {
             throw new ExceptionValidation("Consulta não pode ser agendado com paciente excluído.");
         }

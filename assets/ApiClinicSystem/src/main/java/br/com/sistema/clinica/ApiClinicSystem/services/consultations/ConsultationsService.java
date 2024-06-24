@@ -1,5 +1,6 @@
 package br.com.sistema.clinica.ApiClinicSystem.services.consultations;
 
+import br.com.sistema.clinica.ApiClinicSystem.dto.consultationDto.ConsultationDetailsDTO;
 import br.com.sistema.clinica.ApiClinicSystem.dto.consultationDto.DataCancelConsultationDTO;
 import br.com.sistema.clinica.ApiClinicSystem.dto.consultationDto.ScheduleAppointmentDTO;
 import br.com.sistema.clinica.ApiClinicSystem.infra.error.ExceptionValidation;
@@ -33,21 +34,30 @@ public class ConsultationsService {
     @Autowired
     private List<AppointmentValidator> appointmentValidatorList;
 
-    public void schedule(ScheduleAppointmentDTO scheduleAppointmentDTO){
+    public ConsultationDetailsDTO schedule(ScheduleAppointmentDTO scheduleAppointmentDTO){
 
         if (!iPacienteRepository.existsById(scheduleAppointmentDTO.idPaciente())) {
             throw new ValidationException("Id não encontrado.");
-//            throw new ExceptionValidation("Id não encontrado.");
         }
 
         // O ID DO MÉDICO É OPCIONAL
         if (scheduleAppointmentDTO.idDoctor() != null && !iDoctorRepository.existsById(scheduleAppointmentDTO.idDoctor())) {
             throw new ValidationException("Id não encontrado.");
-//            throw new ExceptionValidation("Id não encontrado.");
         }
 
-        // TODO PRINCÍPIO SOLID, 3 ESTÃO SENDO APLICADOS - SOD, DEFINIÇÃO LOGO A SEGUIR
+        // SOLID é uma sigla que representa cinco princípios de programação:
+        //  Single Responsibility Principle (Princípio da Responsabilidade Única)
+        //  Open-Closed Principle (Princípio Aberto-Fechado)
+        //  Liskov Substitution Principle (Princípio da Substituição de Liskov)
+        //  Interface Segregation Principle (Princípio da Segregação de Interface)
+        //  Dependency Inversion Principle (Princípio da Inversão de Dependência)
+        //  Cada princípio representa uma boa prática de programação,
+        //  que quando aplicadas facilita muito a sua manutenção e extensão.
+        //  Tais princípios foram criados por Robert Martin, conhecido como Uncle Bob,
+        //  em seu artigo Design Principles and Design Patterns.
+        //  LINK: https://staff.cs.utu.fi/~jounsmed/doos_06/material/DesignPrinciplesAndPatterns.pdf
 
+        // TODO PRINCÍPIO SOLID, 3 ESTÃO SENDO APLICADOS - SOD
         //--------------------------------------------------------------------------------------------------------------
         // AO FAZER ISSO, APLICAMOS 3 PRINCÍPIOS DO SOLID
         // SINGLE RESPONSABILITY PRINCIPLE (PRINCÍPIO DA RESPONSABILIDADE ÚNICA): POIS CADA CLASSE DO VALIDADOR
@@ -67,10 +77,16 @@ public class ConsultationsService {
         var paciente = iPacienteRepository.getReferenceById(scheduleAppointmentDTO.idPaciente());
         var doctor = ChooseDoctor(scheduleAppointmentDTO);
 
-        var consultation = new Consultation(null, doctor, paciente, scheduleAppointmentDTO.date(), null);
-//        var consultation = new Consultation(null, doctor, paciente, scheduleAppointmentDTO.date());
+        if (doctor == null) {
+           throw new ExceptionValidation("Não existe médico disponível nesta data.");
+        }
+
+        var consultation = new Consultation(null, doctor, paciente, scheduleAppointmentDTO.data());
 
         iConsultationRepository.save(consultation);
+
+        return new ConsultationDetailsDTO(consultation);
+
     }
 
     // CASO NÃO TENHA UM MÉDICO REGISTRADO NA REQUISIÇÃO
@@ -80,11 +96,11 @@ public class ConsultationsService {
             return iDoctorRepository.getReferenceById(scheduleAppointmentDTO.idDoctor());
         }
 
-        if (scheduleAppointmentDTO.specialtyEnum() == null) {
+        if (scheduleAppointmentDTO.especialidade() == null) {
             throw new ExceptionValidation("Especialidade não pode ser nula, caso o médico não seja escolhido.");
         }
 
-        return iDoctorRepository.ChooseFreeDoctorOnTheDate(scheduleAppointmentDTO.specialtyEnum(), scheduleAppointmentDTO.date());
+        return iDoctorRepository.ChooseFreeDoctorOnTheDate(scheduleAppointmentDTO.especialidade(), scheduleAppointmentDTO.data());
     }
 
     public void cancel(DataCancelConsultationDTO data) {

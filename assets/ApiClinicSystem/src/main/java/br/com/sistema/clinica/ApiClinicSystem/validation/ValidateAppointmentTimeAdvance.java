@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class ValidateAppointmentTimeAdvance implements AppointmentValidator{
     public void validate(ScheduleAppointmentDTO scheduleAppointmentDTO) {
 
-        var data = scheduleAppointmentDTO.date();
+        var data = scheduleAppointmentDTO.data();
         var hourNow = LocalDateTime.now();
 
         var differenceMinutes = Duration.between(hourNow, data).toMinutes();

@@ -36,7 +36,7 @@ public class Consultation {
     @Enumerated(EnumType.STRING)
     private CancellationReason cancellationReason;
 
-    public Consultation(Long id, Doctor doctor, Paciente paciente, LocalDateTime date, Enum cancellationReason) {
+    public Consultation(Long id, Doctor doctor, Paciente paciente, LocalDateTime date) {
         this.medico= doctor;
         this.paciente = paciente;
         this.data = date;
@@ -46,4 +46,24 @@ public class Consultation {
         this.cancellationReason = cancellationReason;
     }
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public Doctor getMedico() {
+        return medico;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public LocalDateTime getData() {
+        return data;
+    }
+
+    public CancellationReason getCancellationReason() {
+        return cancellationReason;
+    }
 }

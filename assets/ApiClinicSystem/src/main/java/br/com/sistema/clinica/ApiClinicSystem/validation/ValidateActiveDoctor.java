@@ -20,7 +20,7 @@ public class ValidateActiveDoctor implements AppointmentValidator{
             return;
         }
 
-        var activeDoctor = iDoctorRepository.findActiveById(scheduleAppointmentDTO.idDoctor());
+        var activeDoctor = iDoctorRepository.findAtivoById(scheduleAppointmentDTO.idDoctor());
         if (!activeDoctor) {
             throw new ExceptionValidation("Consulta não pode ser agendado com médico excluído.");
         }

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 // CLASSE CONTROLLER NÃO DEVE TER REGRAS DE NOGÓCIO DA APLICAÇÃO
 
 @RestController
-@RequestMapping("/consultas")
+@RequestMapping("consultas")
 public class ConsultationController {
 
     @Autowired
@@ -22,14 +22,14 @@ public class ConsultationController {
     @PostMapping
     @Transactional
     public ResponseEntity schedule(@RequestBody @Valid ScheduleAppointmentDTO scheduleAppointmentDTO) {
-        consultationsService.schedule(scheduleAppointmentDTO);
-        return ResponseEntity.ok(new ConsultationDetailsDTO(null,null,null,null));
+        var consultationDto = consultationsService.schedule(scheduleAppointmentDTO);
+        return ResponseEntity.ok(consultationDto);
     }
 
-    @DeleteMapping
-    @Transactional
-    public ResponseEntity cancel(@RequestBody @Valid DataCancelConsultationDTO dataCancelConsultationDTO) {
-        consultationsService.cancel(dataCancelConsultationDTO);
-        return ResponseEntity.noContent().build();
-    }
+//    @DeleteMapping
+//    @Transactional
+//    public ResponseEntity cancel(@RequestBody @Valid DataCancelConsultationDTO dataCancelConsultationDTO) {
+//        consultationsService.cancel(dataCancelConsultationDTO);
+//        return ResponseEntity.noContent().build();
+//    }
 }
