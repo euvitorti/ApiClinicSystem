@@ -34,6 +34,7 @@ public class Security {
                 // A REQUISIÇÃO É LIBERADA
                 .authorizeHttpRequests(req -> {
                     req.requestMatchers("/login").permitAll();
+                    req.requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "swagger-ui/**").permitAll();
                     // QUALQUER OUTRA REQUISIÇÃO ESTÁ BLOQUEADA
                     req.anyRequest().authenticated();
                 })
