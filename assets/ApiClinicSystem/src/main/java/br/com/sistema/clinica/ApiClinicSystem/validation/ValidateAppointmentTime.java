@@ -11,6 +11,7 @@ import java.time.DayOfWeek;
 @Component
 public class ValidateAppointmentTime implements AppointmentValidator{
 
+    @Override
     public void validate(ScheduleAppointmentDTO scheduleAppointmentDTO) {
 
         var data = scheduleAppointmentDTO.data();

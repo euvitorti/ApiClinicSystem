@@ -14,6 +14,7 @@ public class ValidateActiveDoctor implements AppointmentValidator{
     @Autowired
     private IDoctorRepository iDoctorRepository;
 
+    @Override
     public void validate(ScheduleAppointmentDTO scheduleAppointmentDTO) {
         // ESCOLHA DO MÉDICO OPCIONAL
         if (scheduleAppointmentDTO.idDoctor() == null) {

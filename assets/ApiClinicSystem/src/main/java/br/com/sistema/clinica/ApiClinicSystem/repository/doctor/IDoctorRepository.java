@@ -17,8 +17,8 @@ public interface IDoctorRepository extends JpaRepository<Doctor, Long> {
 
     @Query("""
     SELECT m FROM Medico m
-    WHERE m.ativo = true AND m.especialidade = :specialtyEnum AND m.id
-    NOT IN(SELECT c.medico.id FROM Consulta c WHERE c.data = :date)
+    WHERE m.ativo = true AND m.especialidade = :especialidade AND m.id
+    NOT IN(SELECT c.medico.id FROM Consulta c WHERE c.data = :data)
     ORDER BY RAND() LIMIT 1
     """)
     Doctor ChooseFreeDoctorOnTheDate(SpecialtyEnum especialidade, LocalDateTime data);

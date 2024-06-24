@@ -11,6 +11,8 @@ import java.time.LocalDateTime;
 
 @Component
 public class ValidateAppointmentTimeAdvance implements AppointmentValidator{
+
+    @Override
     public void validate(ScheduleAppointmentDTO scheduleAppointmentDTO) {
 
         var data = scheduleAppointmentDTO.data();

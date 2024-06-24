@@ -14,6 +14,7 @@ public class ValidateActivePaciente implements AppointmentValidator{
     @Autowired
     private IPacienteRepository iPacienteRepository;
 
+    @Override
     public void validate(ScheduleAppointmentDTO scheduleAppointmentDTO) {
 
         var activePaciente = iPacienteRepository.findAtivoById(scheduleAppointmentDTO.idPaciente());

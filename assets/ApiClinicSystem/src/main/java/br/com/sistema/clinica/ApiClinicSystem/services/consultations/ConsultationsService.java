@@ -74,7 +74,7 @@ public class ConsultationsService {
         // PERCORRENDO O VALIDADOR
         appointmentValidatorList.forEach(v -> v.validate(scheduleAppointmentDTO));
 
-        var paciente = iPacienteRepository.getReferenceById(scheduleAppointmentDTO.idPaciente());
+        var paciente = iPacienteRepository.getReferenceById(scheduleAppointmentDTO.idPaciente()); 
         var doctor = ChooseDoctor(scheduleAppointmentDTO);
 
         if (doctor == null) {
