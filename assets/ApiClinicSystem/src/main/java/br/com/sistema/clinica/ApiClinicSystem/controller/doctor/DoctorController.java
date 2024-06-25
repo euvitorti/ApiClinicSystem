@@ -6,6 +6,7 @@ import br.com.sistema.clinica.ApiClinicSystem.dto.doctorDto.ListDoctorsDTO;
 import br.com.sistema.clinica.ApiClinicSystem.dto.doctorDto.UpdateDoctorDTO;
 import br.com.sistema.clinica.ApiClinicSystem.models.doctor.Doctor;
 import br.com.sistema.clinica.ApiClinicSystem.repository.doctor.IDoctorRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("medicos")
+@SecurityRequirement(name = "bearer-key")
 public class DoctorController {
 
     @Autowired
