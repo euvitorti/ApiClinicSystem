@@ -32,7 +32,7 @@ function login() {
         return response.json();
     })
     .then(data => {
-        localStorage.setItem('token', data.token); // Armazena o token JWT localmente
+        localStorage.setItem('Bearer Token', data.token); // Armazena o token JWT localmente
         window.location.href = 'dash.html'; // Redireciona após o login bem-sucedido
     })
     .catch(error => {
