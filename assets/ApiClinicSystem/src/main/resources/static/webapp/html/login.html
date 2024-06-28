@@ -4,21 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
 <div class="login-container">
-    <h1>Login</h1>
-    <form id="login-form">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-
-        <button type="submit">Login</button>
-    </form>
-    <div id="error-message"></div>
+    <div class="login-box">
+        <h1>Welcome! 👋</h1>
+        <form id="login-form">
+            <div class="input-container">
+                <input type="text" id="username" name="username" required placeholder="Username">
+            </div>
+            <div class="input-container">
+                <input type="password" id="password" name="password" required placeholder="Password">
+            </div>
+            <button type="submit" onclick="login()">LOGIN</button>
+        </form>
+        <div class="links">
+            <a href="#">Forgot Username? Password?</a>
+            <a href="#">Create Your Account</a>
+        </div>
+        <div id="error-message"></div>
+    </div>
 </div>
 <script src="script.js"></script>
 </body>
