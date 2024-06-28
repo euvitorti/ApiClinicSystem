@@ -1,5 +1,6 @@
 package br.com.sistema.clinica.ApiClinicSystem.controller.consultation;
 
+import br.com.sistema.clinica.ApiClinicSystem.dto.consultationDto.DataCancelConsultationDTO;
 import br.com.sistema.clinica.ApiClinicSystem.dto.consultationDto.ScheduleAppointmentDTO;
 import br.com.sistema.clinica.ApiClinicSystem.services.consultations.ConsultationsService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -7,10 +8,7 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 // CLASSE CONTROLLER NÃO DEVE TER REGRAS DE NOGÓCIO DA APLICAÇÃO
 
@@ -29,10 +27,10 @@ public class ConsultationController {
         return ResponseEntity.ok(consultationDto);
     }
 
-//    @DeleteMapping
-//    @Transactional
-//    public ResponseEntity cancel(@RequestBody @Valid DataCancelConsultationDTO dataCancelConsultationDTO) {
-//        consultationsService.cancel(dataCancelConsultationDTO);
-//        return ResponseEntity.noContent().build();
-//    }
+    @DeleteMapping
+    @Transactional
+    public ResponseEntity cancel(@RequestBody @Valid DataCancelConsultationDTO dataCancelConsultationDTO) {
+        consultationsService.cancel(dataCancelConsultationDTO);
+        return ResponseEntity.noContent().build();
+    }
 }

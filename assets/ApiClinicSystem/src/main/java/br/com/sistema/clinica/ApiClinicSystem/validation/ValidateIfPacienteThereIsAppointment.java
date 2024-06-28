@@ -1,3 +1,5 @@
+//TODO
+
 //package br.com.sistema.clinica.ApiClinicSystem.validation;
 //
 //import br.com.sistema.clinica.ApiClinicSystem.dto.consultationDto.ScheduleAppointmentDTO;
@@ -21,6 +23,6 @@
 //
 //        if (pacienteHasAnotherAppointment) {
 //            throw new ExceptionValidation("Paciente já possui uma consulta neste mesmo horário.");
-//        }
+//        }ç
 //    }
 //}

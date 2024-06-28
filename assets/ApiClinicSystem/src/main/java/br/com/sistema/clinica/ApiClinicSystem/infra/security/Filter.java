@@ -28,7 +28,10 @@ public class Filter extends OncePerRequestFilter {
     // O PADRÃO DO SPRING É CHAMAR O FILTRO DELE, VERIFICAR SE O USUÁRIO ESTÁ LOGADO
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(
+            HttpServletRequest request,
+            HttpServletResponse response,
+            FilterChain filterChain) throws ServletException, IOException {
 
         var tokenJWT = recoverToken(request);
 
