@@ -14,5 +14,5 @@
 ## Pontos a considerar
 - Atente-se a autenticação do usuário por meio do token JWT, para acessar todas as funcionalidades, o usuário precisa estar cadastrado no sistema e fazer o login, e o token necessita ir no header
 - Leia os comentários
-- O front-end está sendo desenvolvido, acesse o repositório:
+- O front-end está sendo desenvolvido, acesse o repositório: https://github.com/euvitorti/apiClinicSystemFrontEnd
 - Fique a vontade para melhorar o código
