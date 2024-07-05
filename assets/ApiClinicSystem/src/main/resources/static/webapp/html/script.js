@@ -33,7 +33,7 @@ function login() {
     })
     .then(data => {
         localStorage.setItem('Bearer Token', data.token); // Armazena o token JWT localmente
-        window.location.href = 'dash.html'; // Redireciona após o login bem-sucedido
+        window.location.href = 'menu.html'; // Redireciona após o login bem-sucedido
     })
     .catch(error => {
         document.getElementById('error-message').innerText = 'Login failed. Please check your credentials.';

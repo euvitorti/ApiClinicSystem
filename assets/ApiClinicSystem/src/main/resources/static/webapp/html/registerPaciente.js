@@ -58,7 +58,7 @@ function registerPatient(event) {
     })
     .then(data => {
         alert('Patient registered successfully!');
-        window.location.href = 'dash.html'; // Redireciona após o registro bem-sucedido
+        window.location.href = 'menu.html'; // Redireciona após o registro bem-sucedido
     })
     .catch(error => {
         document.getElementById('error-message').innerText = 'Registration failed. Please check your inputs.';
