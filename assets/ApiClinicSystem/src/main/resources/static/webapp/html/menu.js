@@ -9,3 +9,7 @@ document.getElementById('list-patients').addEventListener('click', function() {
 document.getElementById('update-patients').addEventListener('click', function() {
     window.location.href = 'updatePaciente.html';
 });
+
+document.getElementById('search-patients').addEventListener('click', function() {
+    window.location.href = 'searchOnePaciente.html';
+});
