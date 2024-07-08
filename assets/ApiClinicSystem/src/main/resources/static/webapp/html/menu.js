@@ -29,3 +29,7 @@ document.getElementById('list-doctor').addEventListener('click', function() {
 document.getElementById('update-doctor').addEventListener('click', function() {
     window.location.href = 'updateDoctor.html';
 });
+
+document.getElementById('search-doctor').addEventListener('click', function() {
+    window.location.href = 'searchOneDoctor.html';
+});
