@@ -21,3 +21,7 @@ document.getElementById('delete-patients').addEventListener('click', function() 
 document.getElementById('register-doctor').addEventListener('click', function() {
     window.location.href = 'registerDoctor.html';
 });
+
+document.getElementById('list-doctor').addEventListener('click', function() {
+    window.location.href = 'listDoctor.html';
+});
