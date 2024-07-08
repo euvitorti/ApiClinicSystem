@@ -34,7 +34,7 @@ document.getElementById('search-patient-button').addEventListener('click', funct
             var row = document.createElement('tr');
 
             var nameCell = document.createElement('td');
-            nameCell.textContent = data.nome;
+            nameCell.textContent = data.name;
             row.appendChild(nameCell);
 
             var emailCell = document.createElement('td');
