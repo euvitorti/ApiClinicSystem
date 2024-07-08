@@ -13,3 +13,7 @@ document.getElementById('update-patients').addEventListener('click', function() 
 document.getElementById('search-patients').addEventListener('click', function() {
     window.location.href = 'searchOnePaciente.html';
 });
+
+document.getElementById('delete-patients').addEventListener('click', function() {
+    window.location.href = 'deletePaciente.html';
+});
