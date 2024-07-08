@@ -17,3 +17,7 @@ document.getElementById('search-patients').addEventListener('click', function() 
 document.getElementById('delete-patients').addEventListener('click', function() {
     window.location.href = 'deletePaciente.html';
 });
+
+document.getElementById('register-doctor').addEventListener('click', function() {
+    window.location.href = 'registerDoctor.html';
+});
