@@ -33,3 +33,7 @@ document.getElementById('update-doctor').addEventListener('click', function() {
 document.getElementById('search-doctor').addEventListener('click', function() {
     window.location.href = 'searchOneDoctor.html';
 });
+
+document.getElementById('delete-doctor').addEventListener('click', function() {
+    window.location.href = 'deleteDoctor.html';
+});
