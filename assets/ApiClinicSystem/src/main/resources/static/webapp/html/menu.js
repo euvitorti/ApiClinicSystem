@@ -25,3 +25,7 @@ document.getElementById('register-doctor').addEventListener('click', function() 
 document.getElementById('list-doctor').addEventListener('click', function() {
     window.location.href = 'listDoctor.html';
 });
+
+document.getElementById('update-doctor').addEventListener('click', function() {
+    window.location.href = 'updateDoctor.html';
+});
