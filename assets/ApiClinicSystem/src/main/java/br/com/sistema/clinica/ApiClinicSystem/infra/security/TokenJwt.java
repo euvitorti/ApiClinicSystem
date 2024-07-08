@@ -23,7 +23,7 @@ public class TokenJwt {
     @Value("${api.security.token.secret}")
     private String secret;
 
-    public String generateToken(User user){
+    public String generateToken(User user) {
         try {
             var algorithm = Algorithm.HMAC256(secret);
             return JWT.create()
@@ -31,7 +31,7 @@ public class TokenJwt {
                     .withSubject(user.getUsername())
                     .withExpiresAt(expirationDate())
                     .sign(algorithm);
-        } catch (JWTCreationException exception){
+        } catch (JWTCreationException exception) {
             // Invalid Signing configuration / Couldn't convert Claims.
             throw new RuntimeException("Erro ao gerar o token.");
         }
@@ -53,7 +53,7 @@ public class TokenJwt {
                     .verify(tokenJWT)
                     .getSubject();
 
-        } catch (JWTVerificationException exception){
+        } catch (JWTVerificationException exception) {
             // Invalid signature/claims
             throw new RuntimeException("Token inválido ou expirado!");
         }
