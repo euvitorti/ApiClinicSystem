@@ -78,9 +78,7 @@ public class DoctorController {
     @Transactional
     public ResponseEntity deleteDoctor(@PathVariable Long id) {
         var doctor = iDoctorRepository.getReferenceById(id);
-
         doctor.logicalExclusion();
-
         // 204 NO CONTENT
         return ResponseEntity.noContent().build();
     }
