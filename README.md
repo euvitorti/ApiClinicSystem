@@ -16,3 +16,22 @@
 - Leia os comentários
 - O front-end está sendo desenvolvido, acesse o repositório: https://github.com/euvitorti/apiClinicSystemFrontEnd
 - Fique a vontade para melhorar o código
+
+## API Rest developed during the Java and Spring Framework T6 - ONE training
+
+## API Features
+
+- Register and delete doctors and patients
+- List registered patients and doctors in the MySql database
+- Update data
+- Schedule and cancel appointments
+
+## Documentation
+- Run the API and access the documentation for more information: http://localhost:8080/swagger-ui.html
+
+## Points to Consider
+
+- Pay attention to user authentication via JWT token. To access all functionalities, the user needs to be registered in the system and log in, and the token must be included in the header.
+- Read the Comments
+- The front-end is being developed, access the repository: https://github.com/euvitorti/apiClinicSystemFrontEnd
+- Feel free to improve the code.
