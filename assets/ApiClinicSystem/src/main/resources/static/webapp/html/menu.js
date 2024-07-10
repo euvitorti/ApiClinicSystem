@@ -37,3 +37,7 @@ document.getElementById('search-doctor').addEventListener('click', function() {
 document.getElementById('delete-doctor').addEventListener('click', function() {
     window.location.href = 'deleteDoctor.html';
 });
+
+document.getElementById('consultation').addEventListener('click', function() {
+    window.location.href = 'consultation.html';
+});
