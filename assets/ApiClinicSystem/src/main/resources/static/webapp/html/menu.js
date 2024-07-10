@@ -41,3 +41,7 @@ document.getElementById('delete-doctor').addEventListener('click', function() {
 document.getElementById('consultation').addEventListener('click', function() {
     window.location.href = 'consultation.html';
 });
+
+document.getElementById('deleteConsultation').addEventListener('click', function() {
+    window.location.href = 'deleteConsultation.html';
+});
