@@ -1,4 +1,4 @@
-package br.com.sistema.clinica.ApiClinicSystem.services.consultations;
+package br.com.sistema.clinica.ApiClinicSystem.services;
 
 import br.com.sistema.clinica.ApiClinicSystem.dto.consultationDto.ConsultationDetailsDTO;
 import br.com.sistema.clinica.ApiClinicSystem.dto.consultationDto.DataCancelConsultationDTO;

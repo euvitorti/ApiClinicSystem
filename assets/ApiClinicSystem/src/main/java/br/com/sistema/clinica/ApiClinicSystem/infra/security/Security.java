@@ -20,7 +20,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 // Usa a seguinte anotação, para informar ao spring que vamos personalizar a configuração de segurança
 @EnableWebSecurity
-public class Security {
+public class Security  implements WebMvcConfigurer{
 
     @Autowired
     private Filter filter;
@@ -61,4 +61,10 @@ public class Security {
         return new BCryptPasswordEncoder();
     }
 
+    @Override
+    public void addCorsMappings(CorsRegistry corsRegistry) {
+        corsRegistry.addMapping("/**")
+                .allowedOrigins("ADICIONE AQUI A URL PERMITIDA")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT");
+    }
 }

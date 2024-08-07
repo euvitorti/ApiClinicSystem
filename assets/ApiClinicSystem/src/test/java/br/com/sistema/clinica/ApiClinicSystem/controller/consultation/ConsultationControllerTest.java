@@ -3,7 +3,7 @@ package br.com.sistema.clinica.ApiClinicSystem.controller.consultation;
 import br.com.sistema.clinica.ApiClinicSystem.dto.consultationDto.ConsultationDetailsDTO;
 import br.com.sistema.clinica.ApiClinicSystem.dto.consultationDto.ScheduleAppointmentDTO;
 import br.com.sistema.clinica.ApiClinicSystem.models.doctor.SpecialtyEnum;
-import br.com.sistema.clinica.ApiClinicSystem.services.consultations.ConsultationsService;
+import br.com.sistema.clinica.ApiClinicSystem.services.ConsultationsService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
